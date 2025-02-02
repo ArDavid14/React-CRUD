@@ -9,6 +9,7 @@ function App() {
         <label>Apellido: <input type="text"></input></label><br/>
         <label>Celular: <input type="text"></input></label><br/>
         <label>Dirección: <input type="text"></input></label><br/>
+        <button>Registrar</button>
       </div>
     </div>
   );
