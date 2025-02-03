@@ -60,7 +60,7 @@ app.put("/update", (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                res.send("Empleado actualizado con exito :)")
+                res.send("Empleado actualizado con exito  :)")
             }
         }
 
