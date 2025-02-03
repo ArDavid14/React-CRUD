@@ -34,6 +34,39 @@ app.post("/create", (req, res) => {
     );
 });
 
+app.get("/empleados", (req, res) => {
+    db.query("SELECT * FROM EMPLEADO",
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+        }
+
+    );
+});
+
+app.put("/update", (req, res) => {
+    const codigo = req.body.codigo;
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const celular = req.body.celular;
+    const direccion = req.body.direccion;
+
+
+    db.query("UPDATE EMPLEADO SET nombre=?,apellido=?,celular=?,direccion=? WHERE cod=?", [nombre, apellido, celular, direccion, codigo],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("Empleado actualizado con exito :)")
+            }
+        }
+
+    );
+});
+
 
 app.listen(3001, () => {
     console.log("Corriendo en el puerto");
