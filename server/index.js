@@ -54,13 +54,12 @@ app.put("/update", (req, res) => {
     const celular = req.body.celular;
     const direccion = req.body.direccion;
 
-
     db.query("UPDATE EMPLEADO SET nombre=?,apellido=?,celular=?,direccion=? WHERE cod=?", [nombre, apellido, celular, direccion, codigo],
         (err, result) => {
             if (err) {
                 console.log(err);
             } else {
-                res.send("Empleado actualizado con exito  :)")
+                res.send("Empleado actualizado con exito")
             }
         }
 

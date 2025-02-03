@@ -95,7 +95,7 @@ function App() {
               editar?
               <div>
               <button className='btn btn-warning m-2' onClick={update}>Actualiar</button>
-              <button className='btn btn-danger m-2'  onClick={add}>Cancelar</button>
+              <button className='btn btn-danger m-2' onClick={add}>Cancelar</button>
               </div>
               :<button className='btn btn-success' onClick={add}>Registrar</button>
             }
