@@ -1,5 +1,7 @@
 import './App.css';
 import { useState } from 'react';
+import Axios from "axios";
+
 
 function App() {
 
@@ -9,8 +11,17 @@ function App() {
   const [celular, setCelular] = useState(0); 
   const [direccion, setDireccion] = useState(""); 
 
-  const mostratDatos = ()=>{
-    alert(nombre)
+
+  const add = ()=>{
+    Axios.post("http://localhost:3001/create",{
+      codigo:codigo,
+      nombre:nombre,
+      apellido: apellido,
+      celular:celular,
+      direccion:direccion
+    }).then(()=>{
+      alert("Empleado registrado");
+    });
   }
 
   return (
@@ -41,7 +52,7 @@ function App() {
           setDireccion(event.target.value);
         }} 
         type="text"></input></label><br/>
-        <button onClick={mostratDatos}>Registrar</button>
+        <button onClick={add}>Registrar</button>
       </div>
     </div>
   );
