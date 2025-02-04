@@ -31,6 +31,13 @@ function App() {
     });
   }
 
+  const getEmpleados = () => {
+    Axios.get("http://localhost:3001/empleados").then((response) => {
+      setEmpleados(response.data);
+    });
+  }
+  //getEmpleados();
+
   const update = () => {
     Axios.put("http://localhost:3001/update", {
       codigo: codigo,
@@ -44,6 +51,28 @@ function App() {
     });
   }
 
+  const limpiarCampos = ()=>{
+    setEditar(false);
+  setCodigo("");
+  setNombre("");
+  setApellido("");
+  setCelular("");
+  setDireccion("");
+  }
+
+  const deleteEmpleado = (codigo) => {
+    Axios.delete(`http://localhost:3001/delete/${codigo}`).then(() => {
+      getEmpleados();
+      alert("Empleado eliminado");  
+//      Swal.fire({
+  //      title: "<strong>Actualizacion exitosa!!!</strong>",
+    //    html: "<i>El empleado <strong>"+nombre+"</strong> fue eliminado con exito!!!</i>",
+      //  icon: 'success',
+       // timer:3000
+      //})
+    });
+  }
+
   const editarEmpleado = (val) => {
     setEditar(true)
 
@@ -54,13 +83,6 @@ function App() {
     setDireccion(val.direccion);
   }
 
-
-  const getEmpleados = () => {
-    Axios.get("http://localhost:3001/empleados").then((response) => {
-      setEmpleados(response.data);
-    });
-  }
-  getEmpleados();
 
   return (
     <div className='container'>
@@ -95,7 +117,7 @@ function App() {
               editar?
               <div>
               <button className='btn btn-warning m-2' onClick={update}>Actualiar</button>
-              <button className='btn btn-danger m-2' onClick={add}>Cancelar</button>
+              <button className='btn btn-danger m-2' onClick={limpiarCampos}>Cancelar</button>
               </div>
               :<button className='btn btn-success' onClick={add}>Registrar</button>
             }
@@ -130,7 +152,9 @@ function App() {
                   <button type='button' className='btn btn-info' onClick={() => {
                     editarEmpleado(val)
                   }}>Editar</button>
-                  <button type='button' className='btn btn-danger'>eliminar</button>
+                  <button type='button' onClick={()=>{
+                    deleteEmpleado(val.cod);
+                  }} className='btn btn-danger'>eliminar</button>
                   </div>
                   
                 </th>
