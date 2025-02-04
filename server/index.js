@@ -67,7 +67,23 @@ app.put("/update", (req, res) => {
     );
 });
 
+app.delete("/delete/:codigo", (req, res) => {
+    const cod = req.params.cod;
+    console.log(cod);
+
+    db.query("DELETE FROM empleado WHERE cod=?", cod,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+        }
+
+    );
+});
+
 
 app.listen(3001, () => {
-    console.log("Corriendo en el puerto");
+    console.log("Corriendo en el puerto 3001");
 })
