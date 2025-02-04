@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-
+//npm install cors 
+//npm install mysql express
 
 app.use(cors());
 app.use(express.json());

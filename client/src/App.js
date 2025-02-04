@@ -3,6 +3,10 @@ import { useState } from 'react';
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// npm install axios 
+// npm install react-bootstrap bootstrap
+
+
 function App() {
 
   const [codigo, setCodigo] = useState(0);
