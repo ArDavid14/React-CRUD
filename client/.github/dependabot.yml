@@ -4,6 +4,4 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    allow:
-      - dependency-type: "direct"    # Solo dependencias directas, no transitive
-    versioning-strategy: "increase-if-necessary" # No hace saltos grandes de versión
+ 
